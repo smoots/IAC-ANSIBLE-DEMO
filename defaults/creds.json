@@ -1,5 +1,5 @@
 {
- aws_access_key: AKIAJWCIHLXXJ3OET2RQ,
- aws_secret_key: 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,
- iac_ansible_key: iac_ansible
+ aws_access_key: AKIAJHYINBOGYJRMHL5A,
+ aws_secret_key: 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,
+ iac_ansible_key: jenkins-iac-demo
 }
