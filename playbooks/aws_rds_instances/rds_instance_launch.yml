@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+    - name: Include all .json from defaults
+      include_vars:
+        dir: 'defaults'
+        extensions:
+           - json
+
+    - name: Provision RDS MySQL Instance
+      rds:
+         aws_access_key: "{{aws_access_key}}"
+         aws_secret_key: "{{aws_secret_key}}"
+         command: create
+         instance_name: "{{rds_instance_name}}"
+         db_engine: "{{rds_db_engine}}"
+         size: "{{rds_storage_size}}"
+         instance_type: db.m1.small
+         username: mysql_admin
+         password: 1nsecure
+         subnet: "{{rds_subnet_group}}"
+         region: "{{region}}"
+         tags:
+           Environment: testing
+           Application: cms

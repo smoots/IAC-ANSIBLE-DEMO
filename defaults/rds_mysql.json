@@ -1,0 +1,5 @@
+{
+ rds_instance_name: prod-mysql-server,
+ rds_db_engine: MySQL,
+ rds_storage_size: 10
+}

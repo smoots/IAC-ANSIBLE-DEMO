@@ -1,0 +1,37 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  vars_prompt:
+    - name: "instance_count"
+      prompt: "How many instances?"
+      private: no
+  #      confirm: yes
+
+  tasks:
+    - name: Include all .json from defaults
+      include_vars:
+        dir: 'defaults'
+        extensions:
+           - json
+
+    - name: Provision a set of instances
+      ec2:
+         aws_access_key: "{{aws_access_key}}"
+         aws_secret_key: "{{aws_secret_key}}"
+         key_name: "{{iac_ansible_key}}"
+         region: "{{region}}"
+         vpc_subnet_id: "{{aws_prod_subnet}}"
+         group: "{{prod_web_sg}}"
+         instance_type: t2.micro
+         image: "{{web_amazon_base_image}}"
+         assign_public_ip: yes
+         wait: true
+         exact_count: "{{instance_count}}"
+         #exact_count: 1
+         count_tag:
+            Name: Demo
+         instance_tags:
+            Name: Demo
+      register: ec2

@@ -1,0 +1,8 @@
+{
+ prod_smtp_sg: prod_smtp_services,
+ prod_web_sg: prod_web_services,
+ region: us-west-2,
+ vpc_id: vpc-91abe8f7,
+ aws_prod_subnet: subnet-8c9908ea,
+ rds_subnet_group: prod_rds_subnet_group
+}

@@ -1,0 +1,5 @@
+{
+ web_amazon_base_image: ami-e689729e,
+ web_rh_base_image: ami-9fa343e7,
+ web_ubunutu_image: ami-6e1a0117
+}
